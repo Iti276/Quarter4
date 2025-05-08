@@ -1,15 +1,14 @@
-Pneumonia Detection Using Convolutional Neural Networks (CNN)
-This repository contains a deep learning-based pipeline built with PyTorch to detect pneumonia from chest X-ray images. The project includes image preprocessing, model training with early stopping, evaluation, and visualization of results using a custom Convolutional Neural Network.
+# Pneumonia Detection Using Convolutional Neural Networks (CNN)
 
-🧠 Model Summary
-The model is a simple CNN architecture trained on a chest X-ray dataset (binary classification: Normal vs. Pneumonia). The pipeline uses data augmentation for training and implements early stopping to avoid overfitting.
+This repository contains a PyTorch-based deep learning pipeline for classifying chest X-ray images into **Pneumonia** or **Normal** categories.
 
-📁 Dataset
-The dataset is structured using the ImageFolder format with the following directory layout:
+---
 
-css
-Copy
-Edit
+## 📁 Dataset Structure
+
+The model uses a chest X-ray dataset organized in the following structure:
+
+```
 chest_xray_new/
 ├── train/
 │   ├── NORMAL/
@@ -20,77 +19,111 @@ chest_xray_new/
 └── test/
     ├── NORMAL/
     └── PNEUMONIA/
-📌 The dataset can be downloaded from the Kaggle Chest X-Ray Images (Pneumonia) dataset.
+```
 
-🚀 How to Run
-Clone the repository:
+> You can download the dataset from [Kaggle - Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia)
 
-bash
-Copy
-Edit
-git clone https://github.com/your-username/pneumonia-cnn.git
-cd pneumonia-cnn
-Install required packages:
+---
 
-bash
-Copy
-Edit
-pip install torch torchvision scikit-learn matplotlib
-Place the dataset under the correct directory structure (see above).
+## 🧠 Model Overview
 
-Run the main training script:
+The CNN model includes:
 
-bash
-Copy
-Edit
-python train.py
-🔍 Key Features
-Data Augmentation: Random rotations and horizontal flips for generalization.
+* Two convolutional layers with ReLU activation
+* MaxPooling layers
+* Dropout layer to reduce overfitting
+* Two fully connected (FC) layers
 
-CNN Architecture:
+The final output is a binary classification: `NORMAL` or `PNEUMONIA`.
 
-2 convolutional layers
+---
 
-Max pooling and dropout
+## 🧪 Evaluation Metrics
 
-Fully connected layers for classification
+After training, the model is evaluated using:
 
-Early Stopping: Based on validation loss to prevent overfitting.
+* Classification Report (precision, recall, F1-score)
+* Confusion Matrix
+* Visual analysis of predictions
 
-Evaluation:
+### Example Output:
 
-Classification report (Precision, Recall, F1-score)
-
-Confusion matrix
-
-Visualizations of correctly and incorrectly classified images
-
-📊 Sample Results
-Classification Report:
-
-mathematica
-Copy
-Edit
+```
               precision    recall  f1-score   support
+
       Normal       0.91      0.56      0.69       234
    Pneumonia       0.78      0.97      0.87       390
-   Accuracy                            0.81       624
-Confusion Matrix:
 
+    accuracy                           0.81       624
+   macro avg       0.85      0.76      0.78       624
+weighted avg       0.83      0.81      0.80       624
+```
 
-Sample Visualizations:
+---
 
-Correct and incorrect classifications shown using matplotlib for model interpretation.
+## 🖼️ Visualizations
 
-📌 Requirements
-Python 3.7+
+The script includes functions to:
 
-PyTorch
+* Display correctly and incorrectly predicted samples:
 
-torchvision
+  * True Positives: Predicted = 1, Actual = 1
+  * True Negatives: Predicted = 0, Actual = 0
+  * False Positives: Predicted = 1, Actual = 0
+  * False Negatives: Predicted = 0, Actual = 1
 
-scikit-learn
+* Show Confusion Matrix heatmap
 
-matplotlib
+These plots help interpret the model’s performance visually.
 
-numpy
+---
+
+## 💻 How to Run
+
+1. **Clone the repository:**
+
+```bash
+git clone https://github.com/your-username/pneumonia-cnn.git
+cd pneumonia-cnn
+```
+
+2. **Install the dependencies:**
+
+```bash
+pip install torch torchvision matplotlib scikit-learn numpy
+```
+
+3. **Organize your dataset:** Place the chest\_xray\_new folder with the expected subfolders in the project directory.
+
+4. **Run the training script:**
+
+```bash
+python train.py
+```
+
+---
+
+## ⚙️ Features
+
+* Data augmentation on the training set (random flip and rotation)
+* Early stopping to avoid overfitting
+* Classification evaluation using `sklearn`
+* Confusion matrix visualization using `matplotlib`
+
+---
+
+## 🛠️ Requirements
+
+* Python 3.7+
+* PyTorch
+* torchvision
+* scikit-learn
+* numpy
+* matplotlib
+
+---
+
+## 👤 Author
+
+**Iti Rohilla**
+Email: [rohilla.i@northeastern.edu](mailto:rohilla.i@northeastern.ed)\\
